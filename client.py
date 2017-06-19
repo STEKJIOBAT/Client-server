@@ -1,5 +1,8 @@
 import socket
-s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(('127.0.0.1', 8080))
-s.send(input().encode())
-s.close()
+while True:
+    try:
+        s.send(input().encode())
+    except KeyboardInterrupt:
+        s.close()
